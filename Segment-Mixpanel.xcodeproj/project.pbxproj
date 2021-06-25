@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C939C77F2682865000722371 /* Segment in Frameworks */ = {isa = PBXBuildFile; productRef = C939C77E2682865000722371 /* Segment */; };
 		C979B8272326E318003E9671 /* Segment_Mixpanel.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B8252326E318003E9671 /* Segment_Mixpanel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C979B8312326E361003E9671 /* SEGMixpanelIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = C979B82D2326E361003E9671 /* SEGMixpanelIntegration.m */; };
 		C979B8322326E361003E9671 /* SEGMixpanelIntegrationFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B82E2326E361003E9671 /* SEGMixpanelIntegrationFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C979B8332326E361003E9671 /* SEGMixpanelIntegration.h in Headers */ = {isa = PBXBuildFile; fileRef = C979B82F2326E361003E9671 /* SEGMixpanelIntegration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C979B8342326E361003E9671 /* SEGMixpanelIntegrationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C979B8302326E361003E9671 /* SEGMixpanelIntegrationFactory.m */; };
-		C9F48E9B26274A2C0002ACD9 /* Mixpanel.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F48E9A26274A2C0002ACD9 /* Mixpanel.xcframework */; };
-		C9F48E9F26274BB00002ACD9 /* Segment.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F48E9E26274BB00002ACD9 /* Segment.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F48E9F26274BB00002ACD9 /* Segment.xcframework in Frameworks */,
-				C9F48E9B26274A2C0002ACD9 /* Mixpanel.xcframework in Frameworks */,
+				C939C77F2682865000722371 /* Segment in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +112,9 @@
 			dependencies = (
 			);
 			name = "Segment-Mixpanel";
+			packageProductDependencies = (
+				C939C77E2682865000722371 /* Segment */,
+			);
 			productName = "Segment-Mixpanel";
 			productReference = C979B8222326E318003E9671 /* Segment_Mixpanel.framework */;
 			productType = "com.apple.product-type.framework";
@@ -140,6 +141,9 @@
 				en,
 			);
 			mainGroup = C979B8182326E318003E9671;
+			packageReferences = (
+				C939C77D2682865000722371 /* XCRemoteSwiftPackageReference "analytics-ios" */,
+			);
 			productRefGroup = C979B8232326E318003E9671 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -306,15 +310,21 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/../../Build",
 				);
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "Segment-Mixpanel/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Mixpanel,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.segment.Segment-Mixpanel";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -336,15 +346,21 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/../../Build",
 				);
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "Segment-Mixpanel/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Mixpanel,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.segment.Segment-Mixpanel";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -376,6 +392,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C939C77D2682865000722371 /* XCRemoteSwiftPackageReference "analytics-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/segmentio/analytics-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C939C77E2682865000722371 /* Segment */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C939C77D2682865000722371 /* XCRemoteSwiftPackageReference "analytics-ios" */;
+			productName = Segment;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C979B8192326E318003E9671 /* Project object */;
 }
